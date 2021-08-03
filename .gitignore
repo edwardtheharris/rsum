@@ -25,3 +25,4 @@ files/deploy/deploy
 *.xcf
 .coverage
 *.lock
+circleci
