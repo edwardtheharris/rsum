@@ -119,3 +119,4 @@ AWS_S3_BUCKET_NAME_STATIC = "archive.my-ubox.com"
 AWS_REGION = "us-west-2"
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+SESSION_COOKIE_SECURE = True
