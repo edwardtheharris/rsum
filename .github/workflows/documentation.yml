@@ -1,0 +1,154 @@
+###
+# ```{rubric} MarkdownLint GitHub Actions
+# ```
+# ---
+# This is a basic workflow to help you get started with Actions.
+#
+# ```{literalinclude} /.github/workflows/pages.yml
+# :language: yaml
+# :start-at: "name: Documentation\n"
+# :end-before: "###\n"
+# ```
+#
+# Set a name for the workflow.
+name: Documentation
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+###
+# ```{rubric} Permissions Updates
+# ```
+# Enable read for contents and issues, and write for checks and PRs.
+#
+# ```{literalinclude} /.github/workflows/pages.yml
+# :language: yaml
+# :start-at: "permissions:\n"
+# :end-before: "###\n"
+# ```
+permissions:
+  contents: read
+  issues: read
+  id-token: write
+
+###
+# ```{rubric} Workflow Jobs
+# ```
+# ---
+# A workflow run is made up of one or more
+# jobs that can run sequentially or in parallel
+#
+jobs:
+  ###
+  # ```{rubric} markdownlint
+  # ```
+  # ---
+  # Check that the markdown in this repo is up to our (arbitrary) standards.
+  #
+  # ```{literalinclude} /.github/workflows/pages.yml
+  # :language: yaml
+  # :start-at: "markdownlint:\n"
+  # :end-before: "###\n"
+  # ```
+  markdownlint:
+    permissions:
+      checks: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@85e6279cec87321a52edac9c87bce653a07cf6c2 # main
+      - name: Set up NodeJS
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # main
+      - name: Install the checker
+        run: npm i -g markdownlint-cli2 markdownlint-cli2-formatter-junit --save-dev
+      - name: Lint the Markdown
+        run: markdownlint-cli2 **/*.md *.md
+      - name: Publish Test Results
+        uses: EnricoMi/publish-unit-test-result-action@3a74b2957438d0b6e2e61d67b05318aa25c9e6c6 # v2.20.0
+        if: always()
+        with:
+          check_name: markdown-lint
+          comment_title: Markdown Lint Results
+          files: markdownlint-cli2-junit.xml
+  ###
+  # ```{rubric} Build GitHub Pages Site
+  # ```
+  # ---
+  # Build the pages site using Sphinx and upload the resulting artifact.
+  #
+  # ```{literalinclude} /.github/workflows/pages.yml
+  # :language: yaml
+  # :start-at: "  build:\n"
+  # :end-before: "###\n"
+  # ```
+  build:
+    needs: markdownlint
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@85e6279cec87321a52edac9c87bce653a07cf6c2 # main
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # main
+        with:
+          python-version: 3.11
+          cache: pipenv
+      - name: Setup pages
+        uses: actions/configure-pages@d5606572c479bee637007364c6b4800ac4fc8573 # main
+      - name: Install pipenv
+        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+      - name: Install Python dependencies
+        run: pipenv install
+      - name: Build the static site
+        run: pipenv run sphinx-build -a -E . deploy
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@2d163be3ddce01512f3eea7ac5b7023b5d643ce1 # main
+        with:
+          path: "./deploy"
+  ###
+  # ```{rubric} Deploy the Pages site
+  # ```
+  # ---
+  # Download the artifact and deploy to pages.
+  #
+  # ```{literalinclude} /.github/workflows/pages.yml
+  # :language: yaml
+  # :start-at: "  pages:\n"
+  # ```
+  pages:
+    permissions:
+      pages: write
+      id-token: write
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+        with:
+          egress-policy: audit
+
+      - name: Download pages artifact
+        id: download
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # main
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
