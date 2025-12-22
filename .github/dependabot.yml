@@ -1,0 +1,30 @@
+###
+# ```{rubric} Dependabot Config
+# ```
+# ---
+# To get started with Dependabot version updates, you'll need to specify which
+# package ecosystems to update and where the package manifests are located.
+#
+# ```{note}
+# Please see the documentation for all configuration
+# [options](https://docs.github.com/code-security/dependabot/dependabot-version-updates/configuration-options-for-the-dependabot.yml-file).
+# ```
+#
+# ```{literalinclude} /.github/dependabot.yml
+# :language: yaml
+# :start-at: "updates:\n"
+# ```
+updates:
+  - directory: "/"
+    package-ecosystem: "pip"
+    schedule:
+      interval: "weekly"
+  - directory: "postgresql/"
+    ###
+    # See documentation for possible values
+    #
+    # - `"docker"`
+    package-ecosystem: "docker"
+    schedule:
+      interval: "weekly"
+version: 2

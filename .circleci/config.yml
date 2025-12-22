@@ -1,9 +1,0 @@
----
-version: 2
-jobs:
-  build:
-    docker:
-      - image: edwardtheharris/rsum:latest 
-    steps:
-      - checkout
-      - run: pipenv install
