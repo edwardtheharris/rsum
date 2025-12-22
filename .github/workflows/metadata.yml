@@ -1,0 +1,112 @@
+###
+# ```{rubric} Update Metadata
+# ```
+# ---
+# Set issue and PR metadata without human intervention.
+#
+# ```{literalinclude} /.github/workflows/metadata.yml
+# :language: yaml
+# :start-at: "name: Update Metadata\n"
+# :end-before: "####\n"
+# ```
+name: Update Metadata
+on:
+  issues: {}
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch: {}
+####
+
+###
+# ```{rubric} Metadata Action Jobs
+# ```
+# ---
+# Update issue metadata.
+#
+# ```{literalinclude} /.github/workflows/metadata.yml
+# :language: yaml
+# :start-at: "jobs:\n"
+# :end-before: "####\n"
+# ```
+permissions:
+  contents: read
+
+jobs:
+  add_labels:
+    permissions:
+      pull-requests: write
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+        with:
+          egress-policy: audit
+
+      - name: checkout
+        uses: actions/checkout@85e6279cec87321a52edac9c87bce653a07cf6c2 # main
+        with:
+          fetch-depth: 0
+      - name: add labels
+        uses: actions-ecosystem/action-add-labels@1a9c3715c0037e96b97bb38cb4c4b56a1f1d4871 # main
+        with:
+          github_token: ${{ secrets.PROJECT_PAT }}
+          labels: |
+            ${{ github.event.pull_request.base.ref }}
+  assign-author:
+    permissions:
+      pull-requests: write
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+        with:
+          egress-policy: audit
+
+      - name: assign
+        uses: toshimaru/auto-author-assign@7e15cd70c245ad136377c3fab3479815df10d844 # main
+  add-to-project:
+    permissions:
+      pull-requests: write
+      issues: write
+    name: Add issue to project
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/add-to-project@5b1a254a3546aef88e0a7724a77a623fa2e47c36 # main
+        with:
+          # You can target a project in a different organization
+          # to the issue
+          project-url: https://github.com/users/edwardtheharris/projects/5
+          github-token: ${{ secrets.PROJECT_PAT }}
+  add-to-milestone:
+    permissions:
+      pull-requests: write
+      issues: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@0634a2670c59f64b4a01f0f96f84700a4088b9f0 # v2.12.0
+        with:
+          egress-policy: audit
+
+      - uses: benelan/milestone-action@ae503769af66e741a9d7f76052058e1c3054fd7e # v3.1.0
+        with:
+          # If true, add the milestone with the farthest due date. By default,
+          # the action adds the current milestone (closest due date).
+          farthest: false
+
+          # If true, overwrite existing milestones on issues and pull requests.
+          # By default, the action exits if a milestone has already been added.
+          overwrite: true
+
+          # If true, add the only open milestone in a repo, even if there is no
+          # due date. By default, milestones with no due date are ignored.
+          single: true
+####
