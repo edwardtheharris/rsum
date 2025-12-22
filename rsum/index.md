@@ -2,19 +2,17 @@
 abstract: A simple Python package for managing the archive.
 author: Xander Harris
 date: 2025-12-22
-title: rsum
+title: rsum main readme
 ---
 
 This package is mostly meant for keeping the version up to date.
 It also provides an index for the rḗsumḗs archived here.
 
-## Archives
+## Contents
 
 ```{toctree}
-rsum/index
-rsum/pdf
-rsum/word
-```
+:caption: archive
 
-```{sectionauthor} Xander Harris <xandertheharris@gmail.com>
+pdf
+word
 ```
