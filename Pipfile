@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+pipenv = "*"
+sphinx = "*"
+loguru = "*"
+version-query = "*"
+myst-parser = {extras = ["linkify"], version = "*"}
+sphinx-copybutton = "*"
+sphinx-autobuild = "*"
+sphinxcontrib-autoyaml = "*"
+sphinx-book-theme = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
