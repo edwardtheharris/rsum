@@ -11,8 +11,10 @@ title: rsum index
 :maxdepth: 2
 :glob:
 
+changelog
 readme
 rsum/index
+rsum/src/xander-harris
 ```
 
 ## Current
