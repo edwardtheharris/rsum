@@ -32,4 +32,3 @@ The following documents are in Word format.
 - [2025-12-16.xander-harris.docx](path:///_static/archive/docx/2025-12-16.xander-harris.docx)
 - [2025-12-19.xander-harris.docx](path:///_static/archive/docx/2025-12-19.xander-harris.docx)
 - [2025-12-23.xander-harris.docx](path:///_static/archive/docx/2025-12-23.xander-harris.docx)
-
