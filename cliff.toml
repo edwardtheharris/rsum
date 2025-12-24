@@ -5,7 +5,7 @@
 [changelog]
 header = """
 ---
-abstract: Changelog for the dotfiles repository.
+abstract: Changelog for the cv archive
 title: Changelog
 ---
 <!--markdownlint-disable-->
@@ -23,12 +23,12 @@ body = """
     {% for commit in commits %}
         - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
             {% if commit.breaking %}[**breaking**] {% endif %}\
-            {{ commit.message | upper_first }}
+            {{ commit.message | upper_first }}\
     {% endfor %}
 {% endfor %}
 """
 # Remove leading and trailing whitespaces from the changelog's body.
-trim = false
+trim = true
 # Render body even when there are no releases to process.
 render_always = true
 # An array of regex based postprocessors to modify the changelog.
@@ -37,20 +37,21 @@ postprocessors = [
   #{ pattern = '<REPO>', replace = "https://github.com/orhun/git-cliff" },
 ]
 # render body even when there are no releases to process
+# render_always = true
 # output file path
 output = "changelog.md"
 
 [git]
 # Parse commits according to the conventional commits specification.
 # See https://www.conventionalcommits.org
-conventional_commits = true
+conventional_commits = false
 # Exclude commits that do not match the conventional commits specification.
-filter_unconventional = true
+filter_unconventional = false
 # Require all commits to be conventional.
 # Takes precedence over filter_unconventional.
 require_conventional = false
 # Split commits on newlines, treating each line as an individual commit.
-split_commits = true
+split_commits = false
 # An array of regex based parsers to modify commit messages prior to further processing.
 commit_preprocessors = [
   # Replace issue numbers with link templates to be updated in `changelog.postprocessors`.
@@ -60,7 +61,7 @@ commit_preprocessors = [
   #{ pattern = '.*', replace_command = 'typos --write-changes -' },
 ]
 # Prevent commits that are breaking from being excluded by commit parsers.
-protect_breaking_commits = true
+protect_breaking_commits = false
 # An array of regex based parsers for extracting data from the commit message.
 # Assigns commits to groups.
 # Optionally sets the commit's scope and can decide to exclude commits from further processing.
@@ -83,13 +84,15 @@ commit_parsers = [
 ]
 # Exclude commits that are not matched by any commit parser.
 filter_commits = false
+# Fail on a commit that is not matched by any commit parser.
+fail_on_unmatched_commit = false
 # An array of link parsers for extracting external references, and turning them into URLs, using regex.
 link_parsers = []
 # Include only the tags that belong to the current branch.
 use_branch_tags = false
 # Order releases topologically instead of chronologically.
 topo_order = false
-# Order releases topologically instead of chronologically.
+# Order commits topologically instead of chronologically.
 topo_order_commits = true
 # Order of commits in each group/release within the changelog.
 # Allowed values: newest, oldest

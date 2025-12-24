@@ -14,5 +14,9 @@ It also provides an index for the rḗsumḗs archived here.
 :caption: archive
 
 pdf
+src/xander-harris
 word
+```
+
+```{sectionauthor} Xander Harris <xandertheharris@gmail.com>
 ```
