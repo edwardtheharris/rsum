@@ -1,6 +1,8 @@
 .cache/
 _build
 bin/wheel
+_build/
+reflog
 bin/e*
 bin/p*
 bin/acti*
