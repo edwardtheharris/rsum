@@ -23,12 +23,12 @@ body = """
     {% for commit in commits %}
         - {% if commit.scope %}*({{ commit.scope }})* {% endif %}\
             {% if commit.breaking %}[**breaking**] {% endif %}\
-            {{ commit.message | upper_first }}\
+            {{ commit.message | upper_first }}
     {% endfor %}
 {% endfor %}
 """
 # Remove leading and trailing whitespaces from the changelog's body.
-trim = true
+trim = false
 # Render body even when there are no releases to process.
 render_always = true
 # An array of regex based postprocessors to modify the changelog.
@@ -37,7 +37,6 @@ postprocessors = [
   #{ pattern = '<REPO>', replace = "https://github.com/orhun/git-cliff" },
 ]
 # render body even when there are no releases to process
-# render_always = true
 # output file path
 output = "changelog.md"
 
@@ -89,7 +88,7 @@ link_parsers = []
 # Include only the tags that belong to the current branch.
 use_branch_tags = false
 # Order releases topologically instead of chronologically.
-topo_order = true
+topo_order = false
 # Order releases topologically instead of chronologically.
 topo_order_commits = true
 # Order of commits in each group/release within the changelog.
