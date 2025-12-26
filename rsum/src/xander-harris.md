@@ -33,189 +33,107 @@ A straight shooter with upper management written all over him.
 
 ## Skills
 
-### **Automation**
-
-#### OSS
-
--   Terraform
-
--   Ansible
-
--   Jenkins
-
-#### Google Cloud
-
--   GDM
-
-#### AWS
-
--   Cloud Formation
-
-### Monitoring
-
-#### OSS
-
--   Prometheus
-
--   Grafana
-
--   Thanos
-
--   AlertManager
-
--   Loki
-
-#### Monitoring
-
--   NewRelic
-
--   DataDog
-
--   StackDriver
-
--   ServiceNow
-
-### Networking
-
-#### GCP/AWS
-
--   VPCs
-
--   Subnets
-
--   Security Groups
-
--   Firewalls
-
-#### General
-
--   TCP/IP
-
--   UDP
-
--   E2E Encryption
-
-###  Databases
-
-#### Relational Databases
-
--   PostgreSQL
-
--   MariaDB
-
--   MySQL
-
--   MSSQL
-
-#### NoSQL/Big Data
-
--   MongoDB
-
--   DynamoDB
-
--   Google Big Table
-
--   Google Big Query
-
-### Languages
-
-#### Programming
-
--   Python
-
--   Go (Golang)
-
--   C
-
--   Java
-
--   JavaScript
-
-#### Scripting
-
--   Shell
-
--   BASH
-
--   PowerShell
-
--   Nix
-
-#### Markup
-
--   Markdown
-
--   XML
-
--   HTML
-
--   YAML
-
-###  Orchestration
-
-#### Platforms
-
--   Bare-metal Kubernetes
-
--   Managed Kubernetes
-
--   Docker Enterprise
-
--   Container D
-
--   CRI-O
-
-#### GCP
-
--   Google Kubernetes Engine (Google Kubernetes Engine)
-
--   GCE (Google Compute Engine)
-
-#### AWS
-
--   Elastic Kubernetes Service (Elastic Kubernetes Service)
-
--   ECS (Elastic Container Service)
-
--   EC2 (Elastic Compute Cloud)
-
-### CI/CD
-
-#### Build/Delivery
-
--   Jenkins
-
--   GitLab CI
-
--   CircleCI
-
--   ArgoCD
-
--   Travis CI
-
-#### Quality
-
--   SonarQube
-
--   Code-Climate
-
--   CodeCov
-
-### Software Development Life Cycle
-
-#### Agile
-
--   SCRUM
-
--   Branching Models
-
-#### Waterfall
-
--   Semantic Versioning
-
--   Release Cycles
-
--   Commit Cycles
+```{list-table}
+
+- * Automation
+  * Databases
+  * Orchestration
+- * * OSS
+  * * Relational Databases
+  * * Platformas
+- * * * Terraform
+      * Ansible
+      * Jenkins
+  * * * PostgreSQL
+      * MariaDB
+      * MySQL
+      * MSSQL
+  * * * Bare-metal Kubernetes
+      * Managed Kubernetes
+      * Containerd
+      * CRI-O
+- * * Google Cloud
+  * * NoSQL / Big Data
+  * * GCP
+- * * * GDM
+  * * * MongoDB
+      * DynamoDB
+      * Athena
+      * Google Big Table
+      * Google Big Query
+  * * * Google Kubernetes Engine
+      * Google Compute Engine
+- * * AWS
+  * Languages
+  * * AWS
+- * * * Cloud Formation
+  * * Programming
+  * * * Elastic Kubernetes Service
+      * Elastic Container Service
+      * Elastic Compute Cloud
+- * Monitoring
+  * * * Python
+      * Go (Golang)
+      * C
+      * Java
+      * JavaScript
+  * CI/CD
+- * * OSS
+  * * Scripting
+  * * Build / Delivery
+- * * * Prometheus
+      * Grafana
+      * Thanos
+      * AlertManager
+      * Loki
+  * * * Shell
+      * BASH
+      * PowerShell
+      * Nix
+  * * * Jenkins
+      * GitLab CI
+      * CircleCI
+      * Github Actions
+      * Travis CI
+      * ArgoCD
+- * * Monitoring as a Service
+  * * Markup
+  * * Quality
+- * * * NewRelic
+      * DataDog
+      * StackDriver
+      * ServiceNow
+  * * * Markdown
+      * XML
+      * HTML
+      * YAML
+  * * * SonarQube
+      * CodeCov
+      * Code-Climate
+- * Networking
+  *
+  * Software Development Life Cycle
+- * * GCP/AWS
+  *
+  * * Agile
+- * * * VPCs
+      * Subnets
+      * Security Groups
+      * Firewalls
+  *
+  * * * Scrum
+      * Branching Models
+- * * General
+  *
+  * * Waterfall
+- * * * TCP/IP
+      * UDP
+      * E2E Encryption
+  *
+  * * * Semantic Versioning
+      * Release Cycles
+      * Commit Cycles
+```
 
 ## Experience
 
@@ -481,7 +399,10 @@ Administration
 
 -   Implemented GitLab Continuous Integration for testing and deployment
 
-#### Tools: vscode, vim, GitLab, GitLab CI, GitLab Runner, Docker, CentOS, Alpine Linux, BASH, Python (2 and 3), PowerShell, AWS, SumoLogic, Ansible, Faro, Linux System Administration, AWS API Gateway, AWS Kinesis, AWS Step Functions, AWS Serverless
+Tools:{.smallcaps} vscode, vim, GitLab, GitLab CI, GitLab Runner, Docker,
+  CentOS, Alpine Linux, BASH, Python (2 and 3), PowerShell, AWS, SumoLogic,
+  Ansible, Faro, Linux System Administration, AWS API Gateway, AWS Kinesis,
+  AWS Step Functions, AWS Serverless
 
 ## Gahan Corporation Director of Technology -- (05-2016 -- 12-2023)
 
@@ -496,7 +417,7 @@ Administration
 
 ### Clients
 
-##### CSI Principal DevOps Engineer / Principal Python Engineer
+#### CSI Principal DevOps Engineer / Principal Python Engineer
 
 -   Automated management of development, staging, and production Odoo
     environments, as well as PostgreSQL servers and databases with
@@ -519,7 +440,7 @@ Administration
 Ansible, Docker, HTML, CSS, PostgreSQL, Sphinx, Odoo ERP, GitHub,
 Linode, Linux System Administration
 
-##### Abiogenix, Incorporated Principal DevOps Engineer
+#### Abiogenix, Incorporated Principal DevOps Engineer
 
 -   Deployed, managed, and automated configuration of Atlassian suite
     (JIRA, Bitbucket, Confluence) with Amazon EC2, Amazon ECS, Ansible,
@@ -542,7 +463,7 @@ Linode, Linux System Administration
 Ansible, Docker, Stripe, Python, Django, git, Bitbucket, JIRA,
 Confluence, Tomcat, Apache2, Linux System Administration
 
-##### Network of One DevOps Engineer
+#### Network of One DevOps Engineer
 
 -   Configured, deployed, and provided instruction for a CRM system
     using Ansible, BASH, and AWS EC2.
