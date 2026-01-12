@@ -2,6 +2,7 @@
 reflog
 _build
 bin/wheel
+**/_build/*
 _build/
 reflog
 bin/e*
