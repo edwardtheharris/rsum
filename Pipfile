@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pipenv = "*"
 sphinx = "*"
 loguru = "*"
 version-query = "*"
@@ -13,6 +12,7 @@ sphinx-copybutton = "*"
 sphinx-autobuild = "*"
 sphinxcontrib-autoyaml = "*"
 sphinx-book-theme = "*"
+pipenv = "*"
 
 [dev-packages]
 

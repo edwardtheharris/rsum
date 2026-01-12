@@ -29,4 +29,6 @@ The following documents are in PDF format.
 - [2025-11-06.xander-harris.pdf](path:///_static/archive/pdf/2025-11-06.xander-harris.pdf)
 - [2025-12-16.xander-harris.pdf](path:///_static/archive/pdf/2025-12-16.xander-harris.pdf)
 - [2025-12-19.xander-harris.pdf](path:///_static/archive/pdf/2025-12-19.xander-harris.pdf)
-- [2025-12-23.xander-harris.pdf](path:///_static/archived/pdf/2025-12-23.xander-harris.pdf)
+- [2025-12-23.xander-harris.pdf](path:///_static/archive/pdf/2025-12-23.xander-harris.pdf)
+- [2026-01-05.xander-harris.pdf](path:///_static/archive/pdf/2026-01-05.xander-harris.pdf)
+- [2026-01-07.xander-harris.pdf](path:///_static/archive/pdf/2026-01-07.xander-harris.pdf)
