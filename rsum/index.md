@@ -15,6 +15,7 @@ It also provides an index for the rḗsumḗs archived here.
 
 pdf
 src/xander-harris
+verification
 word
 ```
 
